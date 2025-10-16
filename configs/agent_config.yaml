@@ -1,0 +1,124 @@
+# Agent Configuration for EnterpriseArena
+# This file contains configuration for all supported agent types
+
+# Default agent settings
+default_agent:
+  max_turns: 20
+  timeout_seconds: 300
+  enable_logging: true
+  debug_mode: false
+  enable_self_correction: true
+  max_reasoning_steps: 10
+  reasoning_depth: "detailed"
+
+# Agent-specific configurations
+agents:
+  react:
+    max_turns: 25
+    reasoning_depth: "detailed"
+    enable_self_correction: true
+    max_reasoning_steps: 15
+    strategy: "react"
+    
+  tool_call:
+    max_turns: 30
+    max_tool_calls: 15
+    tool_call_timeout: 30
+    enable_tool_retry: true
+    max_tool_retries: 3
+    strategy: "tool_calling"
+    
+  orchestration:
+    max_turns: 40
+    max_platform_handoffs: 10
+    enable_parallel_execution: true
+    strategy: "orchestration"
+    
+  interactive:
+    max_turns: 50
+    enable_memory: true
+    memory_window: 10
+    max_message_length: 4000
+    strategy: "interactive"
+
+# Model configurations
+models:
+  gpt-4o:
+    provider: "openai"
+    max_tokens: 4000
+    temperature: 0.1
+    top_p: 0.9
+    frequency_penalty: 0.0
+    presence_penalty: 0.0
+    
+  gpt-4o-mini:
+    provider: "openai"
+    max_tokens: 2000
+    temperature: 0.1
+    top_p: 0.9
+    frequency_penalty: 0.0
+    presence_penalty: 0.0
+    
+  gpt-3.5-turbo:
+    provider: "openai"
+    max_tokens: 2000
+    temperature: 0.1
+    top_p: 0.9
+    frequency_penalty: 0.0
+    presence_penalty: 0.0
+    
+  claude-3-opus:
+    provider: "anthropic"
+    max_tokens: 4000
+    temperature: 0.1
+    
+  claude-3-sonnet:
+    provider: "anthropic"
+    max_tokens: 4000
+    temperature: 0.1
+
+# Provider configurations
+providers:
+  openai:
+    api_key: "${OPENAI_API_KEY}"
+    base_url: "https://api.openai.com/v1"
+    timeout: 60
+    max_retries: 3
+    
+  anthropic:
+    api_key: "${ANTHROPIC_API_KEY}"
+    base_url: "https://api.anthropic.com"
+    timeout: 60
+    max_retries: 3
+    
+  azure:
+    api_key: "${AZURE_API_KEY}"
+    base_url: "${AZURE_BASE_URL}"
+    api_version: "2024-02-15-preview"
+    timeout: 60
+    max_retries: 3
+
+# Evaluation settings
+evaluation:
+  enable_metrics: true
+  metrics:
+    - "accuracy"
+    - "efficiency"
+    - "error_handling"
+  weights:
+    accuracy: 0.5
+    efficiency: 0.3
+    error_handling: 0.2
+  thresholds:
+    excellent: 0.9
+    good: 0.8
+    fair: 0.7
+    poor: 0.6
+
+# Performance settings
+performance:
+  enable_caching: true
+  cache_ttl: 3600
+  enable_parallel_execution: true
+  max_concurrent_requests: 10
+  request_timeout: 30

@@ -1,0 +1,78 @@
+# Platform Configuration for EnterpriseArena
+# This file contains configuration for all supported enterprise platforms
+
+platforms:
+  salesforce:
+    environment: "sandbox"  # or "production"
+    api_version: "v58.0"
+    timeout_seconds: 300
+    max_retries: 3
+    credentials:
+      username: "${SALESFORCE_USERNAME}"
+      password: "${SALESFORCE_PASSWORD}"
+      security_token: "${SALESFORCE_SECURITY_TOKEN}"
+      instance_url: "${SALESFORCE_INSTANCE_URL}"  # Optional, will be auto-detected if not provided
+      client_id: "${SALESFORCE_CLIENT_ID}"  # Optional, for OAuth flows
+      client_secret: "${SALESFORCE_CLIENT_SECRET}"  # Optional, for OAuth flows
+    
+  servicenow:
+    environment: "sandbox"  # or "production"
+    api_version: "v2"
+    timeout_seconds: 300
+    max_retries: 3
+    credentials:
+      username: "${SERVICENOW_USERNAME}"
+      password: "${SERVICENOW_PASSWORD}"
+      instance_url: "${SERVICENOW_INSTANCE_URL}"
+    
+  netsuite:
+    environment: "sandbox"  # or "production"
+    api_version: "2023.2"
+    timeout_seconds: 300
+    max_retries: 3
+    credentials:
+      username: "${NETSUITE_USERNAME}"
+      password: "${NETSUITE_PASSWORD}"
+      account_id: "${NETSUITE_ACCOUNT_ID}"
+      role_id: "${NETSUITE_ROLE_ID}"
+      application_id: "${NETSUITE_APPLICATION_ID}"
+      consumer_key: "${NETSUITE_CONSUMER_KEY}"
+      consumer_secret: "${NETSUITE_CONSUMER_SECRET}"
+      token_id: "${NETSUITE_TOKEN_ID}"
+      token_secret: "${NETSUITE_TOKEN_SECRET}"
+    
+  quickbooks:
+    environment: "sandbox"  # or "production"
+    api_version: "v3"
+    timeout_seconds: 300
+    max_retries: 3
+    credentials:
+      client_id: "${QB_CLIENT_ID}"
+      client_secret: "${QB_CLIENT_SECRET}"
+      company_id: "${QB_COMPANY_ID}"
+      access_token: "${QB_ACCESS_TOKEN}"
+      refresh_token: "${QB_REFRESH_TOKEN}"
+      realm_id: "${QB_REALM_ID}"
+
+# Global platform settings
+global_settings:
+  connection_pool_size: 5
+  connection_timeout: 30
+  request_timeout: 60
+  enable_retry: true
+  retry_delay: 1
+  exponential_backoff: true
+  max_retry_attempts: 3
+  
+# Rate limiting settings
+rate_limiting:
+  enabled: true
+  requests_per_minute: 100
+  burst_limit: 20
+  
+# Logging settings
+logging:
+  level: "INFO"
+  log_requests: true
+  log_responses: false
+  log_errors: true

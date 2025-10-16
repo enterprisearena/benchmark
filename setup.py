@@ -36,6 +36,6 @@ setup(
     project_urls={
         "Bug Reports": "https://github.com/enterprisearena/benchmark/issues",
         "Source": "https://github.com/enterprisearena/benchmark",
-        "Documentation": "docs/index.md",
+        "Documentation": "https://github.com/enterprisearena/benchmark/blob/main/docs/index.md",
     },
 )

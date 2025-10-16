@@ -193,7 +193,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Contact
 
 - **Repository**: https://github.com/enterprisearena/benchmark
-- **Documentation**: https://enterprisearena.readthedocs.io
+- **Documentation**: docs/index.md
 - **Issues**: https://github.com/enterprisearena/benchmark/issues
 - **Email**: contact@enterprisearena.org
 

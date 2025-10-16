@@ -3,19 +3,19 @@
 Welcome to the EnterpriseArena documentation.
 
 ## Quick Start
-- [Installation](installation.md)
-- [Configuration](configuration.md)
-- [Platform Setup](platform_setup.md)
+- [Installation](quickstart/installation.md)
+- [Configuration](quickstart/configuration.md)
+- [Platform Setup](quickstart/platform_setup.md)
 
 ## Development
-- [Task Creation](task_creation.md)
-- [Agent Development](agent_development.md)
-- [Evaluation Guide](evaluation.md)
-- [API Reference](api_reference.md)
+- [Task Creation](development/task_creation.md)
+- [Agent Development](development/agent_development.md)
+- [Evaluation Guide](development/evaluation.md)
+- [API Reference](development/api_reference.md)
 
 ## Architecture & Design
-- [Summary](summary.md)
-- [Architecture Design](architecture_design.md)
-- [Platform Abstraction](platform_abstraction.md)
-- [Cross-Platform Tasks](cross_platform_tasks.md)
-- [Implementation Plan](implementation_plan.md)
+- [Summary](architecture/summary.md)
+- [Architecture Design](architecture/architecture_design.md)
+- [Platform Abstraction](architecture/platform_abstraction.md)
+- [Cross-Platform Tasks](architecture/cross_platform_tasks.md)
+- [Implementation Plan](architecture/implementation_plan.md)

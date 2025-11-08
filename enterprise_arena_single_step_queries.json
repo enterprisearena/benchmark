@@ -1,0 +1,607 @@
+[
+  {
+    "idx": 1,
+    "task": "Retrieve Salesforce leads created within 30 days",
+    "persona": "You are the Salesforce lead operations analyst translating executive follow-ups into precise lead filters.",
+    "metadata": {
+      "required": "Extract the time window for lead creation, the objects or fields to return, and any dependency systems referenced.",
+      "optional": "Include segmentation notes like region or campaign if mentioned."
+    },
+    "query": "Growth VP Sonia needs a Salesforce query that pulls all leads created in the last 30 days and returns lead names plus email addresses so she can sync with the nurture playbook dashboard.",
+    "answer": [
+      "CreatedDate = LAST 30 DAYS",
+      "Fields: Name, Email"
+    ]
+  },
+  {
+    "idx": 2,
+    "task": "List open high-priority ServiceNow incidents",
+    "persona": "You are the ServiceNow incident triage coordinator turning operations pings into backlog filters.",
+    "metadata": {
+      "required": "Capture the priority and state filters plus any ordering or dependency feeds.",
+      "optional": "Include assignment group hints if stakeholders provide them."
+    },
+    "query": "Support commander Ravi wants a ServiceNow incident query listing high priority incidents that are still open ordered by most recent update, referencing the midnight bridge summary.",
+    "answer": [
+      "priority=1",
+      "state!=Closed",
+      "ORDERBYDESC sys_updated_on"
+    ]
+  },
+  {
+    "idx": 3,
+    "task": "Report Salesforce opportunities by close date",
+    "persona": "You are the Salesforce revenue desk analyst interpreting sales leadership prompts into SOQL clauses.",
+    "metadata": {
+      "required": "Identify the close date window, stage requirement, and any dependent data sets to reconcile.",
+      "optional": "Surface requested projection fields if mentioned."
+    },
+    "query": "CRO Hayden asked for a Salesforce opportunity list for deals closing between July 1 2024 and July 31 2024 where the stage sits at 'Negotiation/Review', so he can align with the forecasting cube.",
+    "answer": [
+      "CloseDate >= July 1 2024",
+      "CloseDate <= July 31 2024",
+      "StageName = Negotiation/Review"
+    ]
+  },
+  {
+    "idx": 4,
+    "task": "Identify ServiceNow incidents by assignment group",
+    "persona": "You are the ServiceNow on-call analyst translating escalation channel requests into targeted queue lookups.",
+    "metadata": {
+      "required": "Capture the assignment group, status filter, and sorting guidance from the requester.",
+      "optional": "Include any dependency exports if noted."
+    },
+    "query": "Network duty manager Elise needs a ServiceNow incident view of all active records assigned to 'Edge Networking Response' sorted by opened date using the bridge ops workbook for cross-checking.",
+    "answer": [
+      "assignment_group=Edge Networking Response",
+      "stateIN(New,In Progress)",
+      "ORDERBY opened_at"
+    ]
+  },
+  {
+    "idx": 5,
+    "task": "Fetch Salesforce lead owners for critical campaign",
+    "persona": "You are the Salesforce campaign revitalization specialist converting marketing briefs into lead queries.",
+    "metadata": {
+      "required": "Extract the campaign name, status filter, and fields requested for export.",
+      "optional": "Note geo or persona slices if provided."
+    },
+    "query": "Campaign strategist Mariah wants the Salesforce lead list on campaign 'AI_Insights_Q3' with status 'Working' showing owner names and work emails so she can queue the SDR handoff deck.",
+    "answer": [
+      "Campaign = AI_Insights_Q3",
+      "Status = Working",
+      "Fields: Owner.Name, Email"
+    ]
+  },
+  {
+    "idx": 6,
+    "task": "Surface ServiceNow change requests pending approval",
+    "persona": "You are the ServiceNow change governance partner who turns CAB requests into actionable filters.",
+    "metadata": {
+      "required": "Capture the approval state, risk level, and any date parameters.",
+      "optional": "Include ordering or dependency feed if stated."
+    },
+    "query": "Change chair Imani needs a ServiceNow change request query for all normal changes pending approval with risk High submitted in the last 7 days, aligned with the CAB prep export.",
+    "answer": [
+      "type=Normal",
+      "approval=Requested",
+      "risk=High",
+      "sys_created_on = LAST 7 DAYS"
+    ]
+  },
+  {
+    "idx": 7,
+    "task": "Extract Salesforce cases awaiting customer reply",
+    "persona": "You are the Salesforce support workflow analyst mapping success manager asks into queue filters.",
+    "metadata": {
+      "required": "Log the case status, reason for filtering, and any channel focus.",
+      "optional": "Capture target owner team if supplied."
+    },
+    "query": "Support director Noel wants Salesforce cases where Status equals 'Waiting on Customer' and Origin is 'Email' so they can prioritize reminders with the escalation dashboard.",
+    "answer": [
+      "Status = Waiting on Customer",
+      "Origin = Email"
+    ]
+  },
+  {
+    "idx": 8,
+    "task": "Locate ServiceNow incidents by category and location",
+    "persona": "You are the ServiceNow campus responder translating facilities pings into incident filters.",
+    "metadata": {
+      "required": "Extract the category, subcategory, location, and state conditions.",
+      "optional": "Include dependency references if named."
+    },
+    "query": "Facilities coordinator Omar needs ServiceNow incidents with Category 'Facilities' and Subcategory 'HVAC' still in state 'In Progress' for location 'HQ South Wing' per the maintenance outage tracker.",
+    "answer": [
+      "category=Facilities",
+      "subcategory=HVAC",
+      "location=HQ South Wing",
+      "state=In Progress"
+    ]
+  },
+  {
+    "idx": 9,
+    "task": "Compile Salesforce tasks due this week",
+    "persona": "You are the Salesforce customer success enablement partner translating team standups into actionable task reports.",
+    "metadata": {
+      "required": "Capture the due date window, task status, and priority requirements.",
+      "optional": "Note referenced dashboards if provided."
+    },
+    "query": "CS manager Bailey is asking for Salesforce tasks due between June 3 2024 and June 7 2024 with status 'Not Started' and priority 'High' so she can balance workload in the renewal cockpit.",
+    "answer": [
+      "ActivityDate >= June 3 2024",
+      "ActivityDate <= June 7 2024",
+      "Status = Not Started",
+      "Priority = High"
+    ]
+  },
+  {
+    "idx": 10,
+    "task": "Identify ServiceNow knowledge articles expiring soon",
+    "persona": "You are the ServiceNow knowledge curator who converts enablement nudges into content audits.",
+    "metadata": {
+      "required": "List the expiration window, article workflow state, and any ownership cues.",
+      "optional": "Include ordering guidance if provided."
+    },
+    "query": "Knowledge manager Priya wants a ServiceNow knowledge base query for articles expiring within the next 14 days that are still in 'Published' state owned by the 'Support Engineering' group aligned with the quarterly maintenance sheet.",
+    "answer": [
+      "kb_knowledge.expiration_date = NEXT 14 DAYS",
+      "workflow_state=Published",
+      "owner_group=Support Engineering"
+    ]
+  },
+  {
+    "idx": 11,
+    "task": "Fetch Salesforce contacts by account tier",
+    "persona": "You are the Salesforce account data steward translating segmentation asks into contact filters.",
+    "metadata": {
+      "required": "Extract the tier condition, industry focus, and fields to return.",
+      "optional": "Include dependency or dashboard references if mentioned."
+    },
+    "query": "Revenue ops lead Jonas needs Salesforce contacts whose parent accounts carry Tier 'Strategic' within industry 'Healthcare', returning full name and mobile number so he can seed the outreach planner.",
+    "answer": [
+      "Account.Tier__c = Strategic",
+      "Account.Industry = Healthcare",
+      "Fields: Name, MobilePhone"
+    ]
+  },
+  {
+    "idx": 12,
+    "task": "Filter ServiceNow problem records by impact",
+    "persona": "You are the ServiceNow problem management analyst converting review board notes into targeted queries.",
+    "metadata": {
+      "required": "Capture the impact setting, state, and any timeframe filters.",
+      "optional": "Include referenced data sources if supplied."
+    },
+    "query": "Problem lead Matteo wants ServiceNow problem records with impact High and state 'Known Error' created within the past 45 days using the reliability review export to double-check scope.",
+    "answer": [
+      "impact=High",
+      "state=Known Error",
+      "sys_created_on = LAST 45 DAYS"
+    ]
+  },
+  {
+    "idx": 13,
+    "task": "Generate Salesforce campaign member export",
+    "persona": "You are the Salesforce lifecycle marketing specialist turning calendar briefs into precise member queries.",
+    "metadata": {
+      "required": "Identify the campaign name, member status filter, and fields to project.",
+      "optional": "Note dependency spreadsheets if present."
+    },
+    "query": "Lifecycle manager Nalini needs an export of Salesforce campaign members for 'FY25_Product_Intro' with Member Status 'Responded' showing contact name and job title to sync with the webinar recap sheet.",
+    "answer": [
+      "Campaign = FY25_Product_Intro",
+      "MemberStatus = Responded",
+      "Fields: Contact.Name, Contact.Title"
+    ]
+  },
+  {
+    "idx": 14,
+    "task": "Locate ServiceNow incidents with pending vendor",
+    "persona": "You are the ServiceNow vendor liaison transforming supplier escalations into oversight queries.",
+    "metadata": {
+      "required": "Capture the vendor field, state filter, and priority requirement.",
+      "optional": "Include dependency references if mentioned."
+    },
+    "query": "Vendor manager Celine wants ServiceNow incidents tagged to vendor 'TelcoOne' where state is 'Awaiting Vendor' and priority is 2 so she can join tomorrow's carrier review using the vendor performance dashboard.",
+    "answer": [
+      "vendor=TelcoOne",
+      "state=Awaiting Vendor",
+      "priority=2"
+    ]
+  },
+  {
+    "idx": 15,
+    "task": "Retrieve Salesforce quote approvals needed",
+    "persona": "You are the Salesforce deal desk coordinator translating AE pushes into approval queues.",
+    "metadata": {
+      "required": "Identify the quote status, approval stage, and amount threshold cited.",
+      "optional": "Call out dependency spreadsheets if referenced."
+    },
+    "query": "Deal desk owner Farah needs Salesforce quotes where Status is 'Pending Approval' and Total Price exceeds 150000 using the executive approvals tracker.",
+    "answer": [
+      "Status = Pending Approval",
+      "TotalPrice > 150000"
+    ]
+  },
+  {
+    "idx": 16,
+    "task": "List ServiceNow catalog requests awaiting fulfillment",
+    "persona": "You are the ServiceNow request fulfillment analyst translating provisioning standups into actionable queues.",
+    "metadata": {
+      "required": "Capture the request state, catalog item focus, and any aging guidance.",
+      "optional": "Include dependency reports if given."
+    },
+    "query": "Fulfillment lead Arturo wants ServiceNow catalog requests for item 'Secure VPN Token' that are in state 'Awaiting Fulfillment' and older than 3 days, referencing the onboarding readiness report.",
+    "answer": [
+      "cat_item=Secure VPN Token",
+      "state=Awaiting Fulfillment",
+      "Opened <= NOW() - 3 days"
+    ]
+  },
+  {
+    "idx": 17,
+    "task": "Gather Salesforce lead conversions by source",
+    "persona": "You are the Salesforce performance analyst converting marketing retros into lead conversion filters.",
+    "metadata": {
+      "required": "List the lead source, conversion status, and date window.",
+      "optional": "Include referenced data marts if mentioned."
+    },
+    "query": "Marketing analytics head Devon needs Salesforce leads with Lead Source 'Webinar' converted between March 1 2024 and March 31 2024 for the pipeline attribution workbook.",
+    "answer": [
+      "LeadSource = Webinar",
+      "IsConverted = true",
+      "ConvertedDate >= March 1 2024",
+      "ConvertedDate <= March 31 2024"
+    ]
+  },
+  {
+    "idx": 18,
+    "task": "Identify ServiceNow incidents breaching SLA",
+    "persona": "You are the ServiceNow service quality analyst translating SLA alerts into actionable queues.",
+    "metadata": {
+      "required": "Capture the SLA status, assignment group, and priority filters.",
+      "optional": "Note dependency dashboards if referenced."
+    },
+    "query": "Quality lead Harper wants ServiceNow incidents assigned to 'Customer Support North America' with priority 3 that have Breach Flag true so she can update the SLA variance report.",
+    "answer": [
+      "assignment_group=Customer Support North America",
+      "priority=3",
+      "u_sla_breached=true"
+    ]
+  },
+  {
+    "idx": 19,
+    "task": "Extract Salesforce assets expiring",
+    "persona": "You are the Salesforce installed base analyst turning renewal huddles into targeted asset queries.",
+    "metadata": {
+      "required": "Note the asset expiration window, product family, and fields to return.",
+      "optional": "Include referenced renewal dashboards if asked."
+    },
+    "query": "Renewal strategist Quinn needs Salesforce assets in product family 'Analytics Suite' expiring within the next 60 days, returning asset name plus contract end date for the renewal cockpit sync.",
+    "answer": [
+      "ProductFamily = Analytics Suite",
+      "EndDate = NEXT 60 DAYS",
+      "Fields: Name, EndDate"
+    ]
+  },
+  {
+    "idx": 20,
+    "task": "Filter ServiceNow incidents by CI outage",
+    "persona": "You are the ServiceNow configuration incident analyst translating CMDB outage calls into lookup filters.",
+    "metadata": {
+      "required": "Record the configuration item, outage boolean, and state filter.",
+      "optional": "Include dependency logs if mentioned."
+    },
+    "query": "CMDB steward Rohan needs ServiceNow incidents tied to CI 'CRM-Cluster-Prod' where the outage flag equals true and state is 'In Progress' referencing the live incident bridge notes.",
+    "answer": [
+      "cmdb_ci=CRM-Cluster-Prod",
+      "u_outage=true",
+      "state=In Progress"
+    ]
+  },
+  {
+    "idx": 21,
+    "task": "Track Salesforce untouched leads",
+    "persona": "You are the Salesforce demand generation analyst converting SDR reminders into clean filters.",
+    "metadata": {
+      "required": "Capture the lead status, created date window, and the fields to surface for follow-up.",
+      "optional": "Echo any referenced nurture workspaces if mentioned."
+    },
+    "query": "SDR manager Ivy wants a Salesforce report of leads with Status 'Open - Not Contacted' created between January 1 2024 and January 31 2024 returning company names and phone numbers so she can feed the revive-cadence workspace.",
+    "answer": [
+      "Status = Open - Not Contacted",
+      "CreatedDate >= January 1 2024",
+      "CreatedDate <= January 31 2024",
+      "Fields: Company, Phone"
+    ]
+  },
+  {
+    "idx": 22,
+    "task": "List ServiceNow incidents opened today",
+    "persona": "You are the ServiceNow operations bridge lead translating shift handoff notes into fast backlog scans.",
+    "metadata": {
+      "required": "Document the assignment group, opened date filter, and ordering requested.",
+      "optional": "Include mention of dependency dashboards if stakeholders cite them."
+    },
+    "query": "Shift commander Leo needs a ServiceNow incident query for assignment group 'Security Response' where sys_created_on is today ordered by DESC sys_created_on to prepare the dawn threat brief, referencing the SOC timeline dashboard.",
+    "answer": [
+      "assignment_group=Security Response",
+      "sys_created_on = TODAY",
+      "ORDERBYDESC sys_created_on"
+    ]
+  },
+  {
+    "idx": 23,
+    "task": "Identify Salesforce opportunities awaiting legal",
+    "persona": "You are the Salesforce deal desk partner translating legal review requests into precise filters.",
+    "metadata": {
+      "required": "Capture the opportunity stage, approval status, and close date window to review.",
+      "optional": "Include dependency trackers if stakeholders reference them."
+    },
+    "query": "Commercial counsel Darius wants Salesforce opportunities in Stage 'Contract Negotiation' with Legal_Status__c 'Pending' and CloseDate within the next 45 days for the weekly legal queue, aligned with the redlines tracker.",
+    "answer": [
+      "StageName = Contract Negotiation",
+      "Legal_Status__c = Pending",
+      "CloseDate = NEXT 45 DAYS"
+    ]
+  },
+  {
+    "idx": 24,
+    "task": "Filter ServiceNow change tasks for rollback",
+    "persona": "You are the ServiceNow release control analyst turning CAB follow-ups into change task filters.",
+    "metadata": {
+      "required": "Record the change task state, type keyword, and related change assignment group.",
+      "optional": "Log any referenced change calendars if provided."
+    },
+    "query": "Release captain Jen needs ServiceNow change tasks containing 'Rollback Validation' in the short description with state 'Work in Progress' tied to change assignment group 'Platform Reliability' so she can prep the freeze board, referencing the release week calendar.",
+    "answer": [
+      "short_descriptionLIKERollback Validation",
+      "state=Work in Progress",
+      "assignment_group=Platform Reliability"
+    ]
+  },
+  {
+    "idx": 25,
+    "task": "Retrieve Salesforce cases missing escalation reason",
+    "persona": "You are the Salesforce escalation desk specialist translating quality audits into actionable queue filters.",
+    "metadata": {
+      "required": "Capture the case priority, escalation flag, and fields to return for cleanup.",
+      "optional": "Include dependency scorecards if they are cited."
+    },
+    "query": "Escalations lead Naveen wants Salesforce cases where Priority is 'High', Escalated__c is true, and Escalation_Reason__c is blank returning case number and owner email for the daily quality audit synced to the escalation scorecard.",
+    "answer": [
+      "Priority = High",
+      "Escalated__c = true",
+      "Escalation_Reason__c = NULL",
+      "Fields: CaseNumber, Owner.Email"
+    ]
+  },
+  {
+    "idx": 26,
+    "task": "Spot ServiceNow knowledge articles needing review",
+    "persona": "You are the ServiceNow knowledge lifecycle owner translating editorial nudges into precise article queues.",
+    "metadata": {
+      "required": "Record the knowledge base, review state flag, and ownership metadata requested.",
+      "optional": "Include dependency spreadsheets if noted."
+    },
+    "query": "Editorial lead Mina wants ServiceNow knowledge articles in knowledge base 'Employee Support' with state 'Draft' where Review_Required=true listing article numbers and assigned editors to sync with the quarterly editorial spreadsheet.",
+    "answer": [
+      "kb_knowledge.kb_knowledge_base=Employee Support",
+      "workflow_state=Draft",
+      "Review_Required=true",
+      "Fields: Number, Assigned_To"
+    ]
+  },
+  {
+    "idx": 27,
+    "task": "Catalog Salesforce products pending price update",
+    "persona": "You are the Salesforce pricing operations analyst translating merchandising messages into product queries.",
+    "metadata": {
+      "required": "Capture the product family, status filter, and custom flag indicating pending price updates.",
+      "optional": "Mention dependency pricebook exports if referenced."
+    },
+    "query": "Pricing director Liza requests Salesforce products in ProductFamily 'Outdoor Essentials' where Status='Active' and Pending_Price_Update__c=true so she can reconcile the global pricebook refresh export.",
+    "answer": [
+      "ProductFamily = Outdoor Essentials",
+      "Status = Active",
+      "Pending_Price_Update__c = true"
+    ]
+  },
+  {
+    "idx": 28,
+    "task": "Audit ServiceNow problems awaiting RCA",
+    "persona": "You are the ServiceNow problem governance lead translating reliability cadences into backlog filters.",
+    "metadata": {
+      "required": "Document the problem state, assigned group, and days since creation filter.",
+      "optional": "Include dependency review documents if cited."
+    },
+    "query": "Reliability chair Omar wants ServiceNow problem records with state 'Known Error', assignment group 'Core Services RCA', and days_since_created>21 so he can update the monthly RCA board referencing the reliability playbook.",
+    "answer": [
+      "state=Known Error",
+      "assignment_group=Core Services RCA",
+      "days_since_created>21"
+    ]
+  },
+  {
+    "idx": 29,
+    "task": "Extract Salesforce campaign influence records",
+    "persona": "You are the Salesforce attribution specialist turning marketing insight requests into influence queries.",
+    "metadata": {
+      "required": "Capture the campaign filter, opportunity stage requirement, and fields requested.",
+      "optional": "Note dependency dashboards if provided."
+    },
+    "query": "Attribution manager Chloe needs Salesforce CampaignInfluence records for campaign 'Enterprise_Summit_2024' tied to opportunities in StageName 'Value Proposition' returning OpportunityId and InfluencePercentage for the exec attribution dashboard.",
+    "answer": [
+      "CampaignId = Enterprise_Summit_2024",
+      "Opportunity.StageName = Value Proposition",
+      "Fields: OpportunityId, InfluencePercentage"
+    ]
+  },
+  {
+    "idx": 30,
+    "task": "Query ServiceNow requests with overdue approvals",
+    "persona": "You are the ServiceNow service catalog coordinator translating intake issues into approval queues.",
+    "metadata": {
+      "required": "Record the request state, approval status, and age threshold.",
+      "optional": "Include dependency rosters if stakeholders note them."
+    },
+    "query": "Catalog lead Priyanka needs ServiceNow requested items where state='Pending Approval', approval='requested', and sys_created_on older than 5 days so she can update the intake SLA roster.",
+    "answer": [
+      "state=Pending Approval",
+      "approval=requested",
+      "sys_created_on <= NOW() - 5 days"
+    ]
+  },
+  {
+    "idx": 31,
+    "task": "Segment Salesforce contacts by persona",
+    "persona": "You are the Salesforce growth operations partner translating ABM briefs into contact filters.",
+    "metadata": {
+      "required": "Capture the persona tag, region picklist, and fields to export.",
+      "optional": "Mention dependency journey boards if applicable."
+    },
+    "query": "Growth strategist Harper needs Salesforce contacts tagged Persona__c 'Procurement Champion' within Region__c 'EMEA' returning contact name and LinkedIn_URL__c for the ABM journey board.",
+    "answer": [
+      "Persona__c = Procurement Champion",
+      "Region__c = EMEA",
+      "Fields: Name, LinkedIn_URL__c"
+    ]
+  },
+  {
+    "idx": 32,
+    "task": "Find ServiceNow incidents with stale work notes",
+    "persona": "You are the ServiceNow incident hygiene auditor turning health checks into actionable filters.",
+    "metadata": {
+      "required": "Document the assignment group, active state, and last updated threshold for work notes.",
+      "optional": "Capture dependency hygiene trackers if mentioned."
+    },
+    "query": "Incident QA lead Tessa wants ServiceNow incidents assigned to 'Digital Commerce Support' with state 'In Progress' where u_last_work_note_update older than 4 days referencing the hygiene tracker.",
+    "answer": [
+      "assignment_group=Digital Commerce Support",
+      "state=In Progress",
+      "u_last_work_note_update <= NOW() - 4 days"
+    ]
+  },
+  {
+    "idx": 33,
+    "task": "Flag Salesforce accounts missing industry",
+    "persona": "You are the Salesforce data stewardship analyst translating enrichment alerts into remediation queues.",
+    "metadata": {
+      "required": "Capture the account tier, country filter, and blank industry condition.",
+      "optional": "Include dependency enrichment exports if referenced."
+    },
+    "query": "Data governance lead Pilar needs Salesforce accounts with Tier__c 'Growth' in BillingCountry 'Canada' where Industry is blank to feed the enrichment export.",
+    "answer": [
+      "Tier__c = Growth",
+      "BillingCountry = Canada",
+      "Industry = NULL"
+    ]
+  },
+  {
+    "idx": 34,
+    "task": "Surface ServiceNow releases awaiting CAB",
+    "persona": "You are the ServiceNow release planner translating deployment calendars into actionable release queries.",
+    "metadata": {
+      "required": "Document the release status, scheduled start window, and owner group focus.",
+      "optional": "Include dependency CAB agendas if mentioned."
+    },
+    "query": "Deployment manager Quinn wants ServiceNow releases with status 'Scheduled' where Scheduled_start within next 14 days and owner group 'Platform Engineering' to prep the CAB agenda export.",
+    "answer": [
+      "status=Scheduled",
+      "Scheduled_start = NEXT 14 DAYS",
+      "owner_group=Platform Engineering"
+    ]
+  },
+  {
+    "idx": 35,
+    "task": "Compile Salesforce pipeline by partner",
+    "persona": "You are the Salesforce partner operations analyst turning alliance briefings into opportunity slices.",
+    "metadata": {
+      "required": "Capture the partner account filter, stage cohort, and fields to return.",
+      "optional": "Reference partner dashboards when cited."
+    },
+    "query": "Alliance director Sofia wants Salesforce opportunities where Partner_Account__c = 'Nimbus Systems' and StageName IN ('Proposal/Price Quote','Negotiation/Review') returning Opportunity Name and Amount for the partner scorecard.",
+    "answer": [
+      "Partner_Account__c = Nimbus Systems",
+      "StageName IN (Proposal/Price Quote, Negotiation/Review)",
+      "Fields: Name, Amount"
+    ]
+  },
+  {
+    "idx": 36,
+    "task": "Query ServiceNow maintenance windows by site",
+    "persona": "You are the ServiceNow facilities maintenance coordinator translating property schedules into CMDB maintenance filters.",
+    "metadata": {
+      "required": "Record the location, maintenance state, and upcoming window threshold.",
+      "optional": "Include dependency site schedules if referenced."
+    },
+    "query": "Facilities planner Aaliyah needs ServiceNow maintenance windows for location 'AMS-Data-Hall-2' where state='Planned' and window_start within the next 10 days to sync with the site schedule workbook.",
+    "answer": [
+      "location=AMS-Data-Hall-2",
+      "state=Planned",
+      "window_start = NEXT 10 DAYS"
+    ]
+  },
+  {
+    "idx": 37,
+    "task": "List Salesforce events requiring room setup",
+    "persona": "You are the Salesforce field marketing logistics coordinator translating roadshow briefs into event filters.",
+    "metadata": {
+      "required": "Capture the event type, start date window, and custom logistics flag.",
+      "optional": "Note dependency planning sheets if mentioned."
+    },
+    "query": "Event lead Marco needs Salesforce events of Type 'Roadshow' starting between May 1 2024 and May 31 2024 where Logistics_Checklist_Complete__c=false to prep the venue setup sheet.",
+    "answer": [
+      "Type = Roadshow",
+      "StartDate >= May 1 2024",
+      "StartDate <= May 31 2024",
+      "Logistics_Checklist_Complete__c = false"
+    ]
+  },
+  {
+    "idx": 38,
+    "task": "Pull ServiceNow survey responses needing follow-up",
+    "persona": "You are the ServiceNow experience analyst translating CX alerts into actionable survey queues.",
+    "metadata": {
+      "required": "Document the survey name, rating threshold, and follow-up flag.",
+      "optional": "Include dependency CX dashboards if cited."
+    },
+    "query": "CX director Amara wants ServiceNow survey responses for survey 'Incident Closure CSAT' where rating<=2 and Follow_up_required=true so she can update the CX pulse dashboard.",
+    "answer": [
+      "survey=Incident Closure CSAT",
+      "rating<=2",
+      "Follow_up_required=true"
+    ]
+  },
+  {
+    "idx": 39,
+    "task": "Locate Salesforce assets lacking support plan",
+    "persona": "You are the Salesforce customer success architect translating renewal risk flags into asset filters.",
+    "metadata": {
+      "required": "Capture the product family, active status, and blank support plan field condition.",
+      "optional": "Mention dependency renewal dashboards if applicable."
+    },
+    "query": "Success strategist Lena needs Salesforce assets in ProductFamily 'Data Services' with Status='Active' where Support_Plan__c is blank to fuel the renewal risk dashboard.",
+    "answer": [
+      "ProductFamily = Data Services",
+      "Status = Active",
+      "Support_Plan__c = NULL"
+    ]
+  },
+  {
+    "idx": 40,
+    "task": "Detect ServiceNow major incidents lacking comms",
+    "persona": "You are the ServiceNow major incident commander translating bridge audits into cleanup filters.",
+    "metadata": {
+      "required": "Record the major incident state, communication flag, and assignment group focus.",
+      "optional": "Include dependency bridge logs if mentioned."
+    },
+    "query": "Major incident lead Victor wants ServiceNow major incident records with state 'Active', Communication_Plan_Delivered=false, and assignment group 'Global Incident Command' referencing the bridge action log.",
+    "answer": [
+      "state=Active",
+      "Communication_Plan_Delivered=false",
+      "assignment_group=Global Incident Command"
+    ]
+  }
+]

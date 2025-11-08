@@ -1,0 +1,842 @@
+[
+  {
+    "idx": 1,
+    "task": "Segment Salesforce leads by region and campaign",
+    "persona": "You are the Salesforce demand generation strategist turning ambiguous executive nudges into precise lead filters.",
+    "metadata": {
+      "required": "Pin down the created date window, campaign, region attribute, and the fields stakeholders expect back.",
+      "optional": "Include any nurture workspace or downstream dependency if it surfaces during the chat."
+    },
+    "turns": [
+      "Can you pull the leads from our new AI launch?",
+      "Focus on anything created between January 1 2024 and March 31 2024 for North America.",
+      "Make sure it is only the 'AI_Launch_Q1' campaign and return Account Name, Owner Name, and Email so I can sync it to the nurture planner."
+    ],
+    "query": "Campaign director Mina opens with \"Can you pull the leads from our new AI launch?\" When you ask what period and territory she says \"Focus on anything created between January 1 2024 and March 31 2024 for North America.\" A beat later she adds \"Make sure it is only the 'AI_Launch_Q1' campaign and return Account Name, Owner Name, and Email so I can sync it to the nurture planner.\"",
+    "answer": [
+      "Campaign = AI_Launch_Q1",
+      "CreatedDate BETWEEN January 1 2024 AND March 31 2024",
+      "Territory__c = North America",
+      "Fields: Account.Name, Owner.Name, Email"
+    ]
+  },
+  {
+    "idx": 2,
+    "task": "Prioritize ServiceNow bridge-ready incidents",
+    "persona": "You are the ServiceNow incident triage commander translating rolling bridge chatter into high-urgency filters.",
+    "metadata": {
+      "required": "Capture the priority, state, assignment group, and ordering that leadership clarifies over multiple turns.",
+      "optional": "Log any dependency feeds or dashboards once they surface."
+    },
+    "turns": [
+      "Need the latest outage incidents ASAP.",
+      "Make it Priority 1 items that are still In Progress.",
+      "Keep it to assignment group 'Network Engineering Escalations' and order by most recent update for the live bridge doc."
+    ],
+    "query": "Bridge lead Ravi pings \"Need the latest outage incidents ASAP.\" After you probe for severity he replies \"Priority 1 items that are still In Progress.\" When you ask who is handling them he finishes \"Keep it to assignment group 'Network Engineering Escalations' and order by most recent update for the live bridge doc.\"",
+    "answer": [
+      "priority=1",
+      "state=In Progress",
+      "assignment_group=Network Engineering Escalations",
+      "ORDERBYDESC sys_updated_on"
+    ]
+  },
+  {
+    "idx": 3,
+    "task": "Surface Salesforce opportunities ready for CFO prep",
+    "persona": "You are the Salesforce revenue desk partner who steers finance check-ins into actionable SOQL constraints.",
+    "metadata": {
+      "required": "Collect the opportunity stage, close date window, and forecast category the CFO clarifies across turns.",
+      "optional": "Capture any dependency sheets they cite."
+    },
+    "turns": [
+      "Show me the late-stage pipeline I should worry about.",
+      "Anything in 'Negotiation/Review' closing between April 1 2024 and April 30 2024.",
+      "Filter to ForecastCategory = Commit and note it's for the board prep workbook."
+    ],
+    "query": "Finance VP Caleb first asks \"Show me the late-stage pipeline I should worry about.\" When you press for details he says \"Anything in 'Negotiation/Review' closing between April 1 2024 and April 30 2024.\" On a final follow-up he adds \"Filter to ForecastCategory = Commit and note it's for the board prep workbook.\"",
+    "answer": [
+      "StageName = Negotiation/Review",
+      "CloseDate BETWEEN April 1 2024 AND April 30 2024",
+      "ForecastCategory = Commit"
+    ]
+  },
+  {
+    "idx": 4,
+    "task": "Queue ServiceNow change approvals for CAB",
+    "persona": "You are the ServiceNow change governance facilitator converting iterative CAB chatter into crisp change queries.",
+    "metadata": {
+      "required": "Capture change type, approval state, risk, and submission window after clarification.",
+      "optional": "Include any dependency exports referenced at the end."
+    },
+    "turns": [
+      "Need a list of change requests awaiting us.",
+      "Normal changes only with approval status Requested.",
+      "Limit to risk High submitted during the last 10 days and tag it for the CAB prep export."
+    ],
+    "query": "CAB chair Imani messages \"Need a list of change requests awaiting us.\" After you ask what kind she specifies \"Normal changes only, with approval status Requested.\" When you probe for timeframe and risk she replies \"Limit to risk High submitted during the last 10 days and tag it for the CAB prep export.\"",
+    "answer": [
+      "change_type=Normal",
+      "approval=Requested",
+      "risk=High",
+      "sys_created_on = LAST 10 DAYS"
+    ]
+  },
+  {
+    "idx": 5,
+    "task": "Organize Salesforce follow-up tasks for renewals",
+    "persona": "You are the Salesforce customer success workflow planner turning staggered CS notes into actionable task filters.",
+    "metadata": {
+      "required": "Gather the due date window, status, priority, and customer segment across turns.",
+      "optional": "Document any dashboard tie-ins if they emerge."
+    },
+    "turns": [
+      "I need the upcoming tasks on the renewal docket.",
+      "Show tasks due between July 8 2024 and July 12 2024 that are still 'Not Started'.",
+      "Keep Priority = High and only for Segment__c = Strategic so I can balance the renewal cockpit."
+    ],
+    "query": "Renewals lead Bailey starts with \"I need the upcoming tasks on the renewal docket.\" When you ask for boundaries she responds \"Show tasks due between July 8 2024 and July 12 2024 that still sit at 'Not Started'.\" After you check if everything counts she adds \"Keep Priority = High and only for Segment__c = Strategic so I can balance the renewal cockpit.\"",
+    "answer": [
+      "ActivityDate BETWEEN July 8 2024 AND July 12 2024",
+      "Status = Not Started",
+      "Priority = High",
+      "Segment__c = Strategic"
+    ]
+  },
+  {
+    "idx": 6,
+    "task": "Spot ServiceNow knowledge articles requiring refresh",
+    "persona": "You are the ServiceNow knowledge lifecycle owner translating editorial pings into targeted review lists.",
+    "metadata": {
+      "required": "Collect the knowledge base, workflow state, review flag, and aging rule clarified over turns.",
+      "optional": "Note any spreadsheet or dashboard the editor references."
+    },
+    "turns": [
+      "Which articles should we refresh?",
+      "Stay within the 'Customer Support Hub' knowledge base.",
+      "Pick the ones still Published with Review_Required = true that expire within 21 days; it's for the quarterly maintenance sheet."
+    ],
+    "query": "Editorial chief Priya messages \"Which articles should we refresh?\" After you ask which base she says \"Stay within the 'Customer Support Hub' knowledge base.\" You confirm status and timing and she adds \"Pick the ones still Published with Review_Required = true that expire within 21 days; it's for the quarterly maintenance sheet.\"",
+    "answer": [
+      "kb_knowledge.kb_knowledge_base=Customer Support Hub",
+      "workflow_state=Published",
+      "Review_Required=true",
+      "expiration_date = NEXT 21 DAYS"
+    ]
+  },
+  {
+    "idx": 7,
+    "task": "Target Salesforce contacts for partner enablement",
+    "persona": "You are the Salesforce partner operations steward distilling channel lead requests into precise contact segments.",
+    "metadata": {
+      "required": "Lock down the parent account tier, region, and returned fields that emerge during clarifying dialogue.",
+      "optional": "Capture any launch workspace callouts."
+    },
+    "turns": [
+      "Need the healthcare partners for the rollout.",
+      "Account tier must be 'Premier'.",
+      "Only where Account.Region__c = EMEA and give me Contact Full Name, Title, Mobile so I can seed the partner enablement plan."
+    ],
+    "query": "Channel manager Priyanka opens with \"Need the healthcare partners for the rollout.\" When you ask which tier she answers \"Tier__c should be 'Premier'.\" After you clarify geography and outputs she adds \"Only where Account.Region__c = EMEA and give me Contact Full Name, Title, Mobile so I can seed the partner enablement plan.\"",
+    "answer": [
+      "Account.Tier__c = Premier",
+      "Account.Region__c = EMEA",
+      "Fields: Name, Title, MobilePhone"
+    ]
+  },
+  {
+    "idx": 8,
+    "task": "Collect ServiceNow problem records for reliability review",
+    "persona": "You are the ServiceNow problem management analyst stitching scattered follow-ups into a refined query.",
+    "metadata": {
+      "required": "Capture the impact, state, and creation window finalized through the back-and-forth.",
+      "optional": "Record any dependency exports they cite."
+    },
+    "turns": [
+      "Pull the Known Errors we still owe updates on.",
+      "Impact must be High.",
+      "Anything created in the last 60 days, and yes confirm state is 'Known Error' for the reliability scorecard export."
+    ],
+    "query": "Reliability lead Matteo starts with \"Pull the Known Errors we still owe updates on.\" When you clarify severity he says \"Impact must be High.\" After you ask about timing he closes with \"Anything created in the last 60 days, and yes confirm state is 'Known Error' for the reliability scorecard export.\"",
+    "answer": [
+      "impact=High",
+      "state=Known Error",
+      "sys_created_on = LAST 60 DAYS"
+    ]
+  },
+  {
+    "idx": 9,
+    "task": "Queue Salesforce cases awaiting customer outreach",
+    "persona": "You are the Salesforce support operations planner translating staggered success notes into case filters.",
+    "metadata": {
+      "required": "Pin down the status, origin, priority, and return fields after the multi-turn clarification.",
+      "optional": "Include dashboards if the requester mentions them."
+    },
+    "turns": [
+      "Which cases are still waiting on customers?",
+      "Filter to Origin = 'Email'.",
+      "Only Priority = High, and return CaseNumber plus Owner.Email for the escalation dashboard refresh."
+    ],
+    "query": "Support director Noel first asks \"Which cases are still waiting on customers?\" When you press for channels he says \"Filter to Origin = 'Email'.\" As you confirm next steps he adds \"Only Priority = High, and return CaseNumber plus Owner.Email for the escalation dashboard refresh.\"",
+    "answer": [
+      "Status = Waiting on Customer",
+      "Origin = Email",
+      "Priority = High",
+      "Fields: CaseNumber, Owner.Email"
+    ]
+  },
+  {
+    "idx": 10,
+    "task": "Monitor ServiceNow CI outages for bridge sync",
+    "persona": "You are the ServiceNow configuration incident analyst weaving evolving bridge instructions into a solid query.",
+    "metadata": {
+      "required": "Document the configuration item, outage flag, state, and ordering that settle during the conversation.",
+      "optional": "Track any dependency notes like bridge summaries if they appear."
+    },
+    "turns": [
+      "Need an outage snapshot.",
+      "Focus on 'Payment-Gateway-Prod'.",
+      "Anything with outage = true, state In Progress, ordered by most recent update for the live incident bridge notes."
+    ],
+    "query": "CMDB steward Rohan pings \"Need an outage snapshot.\" You ask which CI and he says \"Focus on 'Payment-Gateway-Prod'.\" After you confirm state he clarifies \"Anything still In Progress with Outage = true.\" Before you close he adds \"Order by most recent update and reference the live incident bridge notes.\"",
+    "answer": [
+      "cmdb_ci=Payment-Gateway-Prod",
+      "outage=true",
+      "state=In Progress",
+      "ORDERBYDESC sys_updated_on"
+    ]
+  },
+  {
+    "idx": 11,
+    "task": "Highlight Salesforce assets nearing renewal",
+    "persona": "You are the Salesforce installed base analyst turning rolling renewal huddles into asset filters.",
+    "metadata": {
+      "required": "Gather the product family, renewal window, customer tier, and fields after clarification.",
+      "optional": "Record any cockpit dependencies if mentioned."
+    },
+    "turns": [
+      "Can you flag analytics renewals coming up?",
+      "ProductFamily must be 'Analytics Suite'.",
+      "Contract End Date within the next 45 days, only Customer_Tier__c = Enterprise, and return Asset Name plus ContractEndDate for the renewal cockpit."
+    ],
+    "query": "Renewal strategist Quinn says \"Can you flag analytics renewals coming up?\" When you clarify scope they reply \"ProductFamily must be 'Analytics Suite'.\" On a follow-up about timing they add \"Contract End Date within the next 45 days and only for Customer_Tier__c = Enterprise, returning Asset Name and ContractEndDate so I can prep the renewal cockpit.\"",
+    "answer": [
+      "ProductFamily = Analytics Suite",
+      "ContractEndDate = NEXT 45 DAYS",
+      "Customer_Tier__c = Enterprise",
+      "Fields: Name, ContractEndDate"
+    ]
+  },
+  {
+    "idx": 12,
+    "task": "Collect ServiceNow approvals stuck in awaiting state",
+    "persona": "You are the ServiceNow approvals desk owner translating duty manager nudges into queue filters.",
+    "metadata": {
+      "required": "Capture table, approval state, assignment, and time window refined across turns.",
+      "optional": "Include any dependency exports once surfaced."
+    },
+    "turns": [
+      "Find the approvals we still owe.",
+      "We're talking change approvals.",
+      "Approval state should be 'requested', assigned_to the 'Site Reliability CAB', and submitted in the past 14 days for the bridge workbook."
+    ],
+    "query": "Duty manager Elise first requests \"Find the approvals we still owe.\" When you ask which table she clarifies \"We're talking change approvals.\" After probing status and ownership she states \"Approval state should be 'requested', assigned_to the 'Site Reliability CAB', and submitted in the past 14 days for the bridge workbook.\"",
+    "answer": [
+      "sys_class_name=change_request",
+      "approval=requested",
+      "assigned_to=Site Reliability CAB",
+      "sys_created_on = LAST 14 DAYS"
+    ]
+  },
+  {
+    "idx": 13,
+    "task": "Prep Salesforce campaign retargeting list",
+    "persona": "You are the Salesforce lifecycle marketing specialist who turns iterative field notes into campaign member pulls.",
+    "metadata": {
+      "required": "Lock the campaign, member status, persona tag, and return fields clarified during the chat.",
+      "optional": "Include dependency spreadsheets if mentioned."
+    },
+    "turns": [
+      "I need members to re-engage.",
+      "Use 'FY25_Field_Tour'.",
+      "Member Status should be 'Attended', filter to Persona__c = Operations Leader, and return Contact Name plus Job Title for the recap workbook."
+    ],
+    "query": "Field marketer Nalini says \"I need members to re-engage.\" When you ask which campaign she answers \"Use 'FY25_Field_Tour'.\" After you clarify status and targeting she adds \"Member Status should be 'Attended', filter to Persona__c = Operations Leader, and return Contact Name plus Job Title for the recap workbook.\"",
+    "answer": [
+      "Campaign = FY25_Field_Tour",
+      "MemberStatus = Attended",
+      "Persona__c = Operations Leader",
+      "Fields: Contact.Name, Contact.Title"
+    ]
+  },
+  {
+    "idx": 14,
+    "task": "Reconcile ServiceNow catalog backlog",
+    "persona": "You are the ServiceNow fulfillment analyst shaping scattered provisioning updates into aging queues.",
+    "metadata": {
+      "required": "Firm up the catalog item, state, age threshold, and assignment group as conversation resolves.",
+      "optional": "Capture any onboarding report references."
+    },
+    "turns": [
+      "Need to see which VPN token requests are lingering.",
+      "Yes, catalog item 'Secure VPN Token'.",
+      "State 'Awaiting Fulfillment', older than 4 days, and only where assignment_group='Access Provisioning Squad' so I can update the onboarding readiness report."
+    ],
+    "query": "Fulfillment lead Arturo starts \"Need to see which VPN token requests are lingering.\" You confirm item and he says \"Yes, catalog item 'Secure VPN Token'.\" After probing status and aging he clarifies \"State should be 'Awaiting Fulfillment', older than 4 days, and only where assignment_group='Access Provisioning Squad' so I can update the onboarding readiness report.\"",
+    "answer": [
+      "cat_item=Secure VPN Token",
+      "state=Awaiting Fulfillment",
+      "sys_created_on < NOW() - 4 days",
+      "assignment_group=Access Provisioning Squad"
+    ]
+  },
+  {
+    "idx": 15,
+    "task": "Identify Salesforce quotes requiring executive approval",
+    "persona": "You are the Salesforce deal desk coordinator translating AE escalations into approval queues.",
+    "metadata": {
+      "required": "Capture quote status, total price threshold, owning region, and returned fields clarified in the conversation.",
+      "optional": "Log any tracker dependency mentioned."
+    },
+    "turns": [
+      "Which quotes do I still have to push through exec review?",
+      "Only where Status = 'Pending Approval'.",
+      "TotalPrice greater than 200000, Region__c = AMER, and return QuoteNumber plus Owner.Email for the executive approvals tracker."
+    ],
+    "query": "Sales director Farah opens \"Which quotes do I still have to push through exec review?\" When you ask about status she replies \"Only where Status = 'Pending Approval'.\" After clarifying thresholds she adds \"TotalPrice greater than 200000, Region__c = AMER, and return QuoteNumber plus Owner.Email for the executive approvals tracker.\"",
+    "answer": [
+      "Status = Pending Approval",
+      "TotalPrice > 200000",
+      "Region__c = AMER",
+      "Fields: QuoteNumber, Owner.Email"
+    ]
+  },
+  {
+    "idx": 16,
+    "task": "Escalate ServiceNow vendor incidents",
+    "persona": "You are the ServiceNow vendor liaison knitting supplier reviews into targeted incident queues.",
+    "metadata": {
+      "required": "Gather vendor name, state, priority, and pending-age rule resolved over the chat.",
+      "optional": "Include dashboard references if stated."
+    },
+    "turns": [
+      "Need to prep Telco escalations.",
+      "Vendor equals 'TelcoOne'.",
+      "State 'Awaiting Vendor', Priority = 2, older than 2 days, and flag it for the carrier review dashboard."
+    ],
+    "query": "Vendor manager Celine pings \"Need to prep Telco escalations.\" When you confirm vendor she nods \"Yes, vendor = 'TelcoOne'.\" After you ask about state and urgency she adds \"State 'Awaiting Vendor', Priority = 2, older than 2 days, and flag for the carrier review dashboard.\"",
+    "answer": [
+      "vendor=TelcoOne",
+      "state=Awaiting Vendor",
+      "priority=2",
+      "sys_created_on < NOW() - 2 days"
+    ]
+  },
+  {
+    "idx": 17,
+    "task": "Calibrate Salesforce pipeline for product specialists",
+    "persona": "You are the Salesforce pipeline analyst turning piecemeal product requests into precise opportunity filters.",
+    "metadata": {
+      "required": "Capture product family, stage, forecast type, and geo after back-and-forth.",
+      "optional": "Record any dependency cube mentions."
+    },
+    "turns": [
+      "Show me where the Atlas product sits.",
+      "Opportunities in Stage 'Proposal/Price Quote'.",
+      "ProductFamily__c must be 'Atlas Platform', ForecastCategory = Pipeline, and restrict to Region__c = APAC for the product punchlist cube."
+    ],
+    "query": "Product GM Sora asks \"Show me where the Atlas product sits.\" You probe for stage and she says \"Opportunities in Stage 'Proposal/Price Quote'.\" After you clarify forecasting signals she adds \"ProductFamily__c must be 'Atlas Platform', ForecastCategory = Pipeline, and restrict to Region__c = APAC for the product punchlist cube.\"",
+    "answer": [
+      "StageName = Proposal/Price Quote",
+      "ProductFamily__c = Atlas Platform",
+      "ForecastCategory = Pipeline",
+      "Region__c = APAC"
+    ]
+  },
+  {
+    "idx": 18,
+    "task": "Audit ServiceNow incidents reopened multiple times",
+    "persona": "You are the ServiceNow quality analyst translating support reliability notes into follow-up queries.",
+    "metadata": {
+      "required": "Capture the reopen count threshold, state, assignment group, and time window clarified in the conversation.",
+      "optional": "Note any scorecard ties if mentioned."
+    },
+    "turns": [
+      "Find incidents that keep bouncing back.",
+      "Reopen count greater than or equal to 2.",
+      "Only those still In Progress inside assignment_group='Customer Support North America' created in the past 30 days for the reliability variance report."
+    ],
+    "query": "Quality lead Harper says \"Find incidents that keep bouncing back.\" When you ask what metric she clarifies \"Reopen count greater than or equal to 2.\" After you check state and ownership she adds \"Only those still In Progress inside assignment_group='Customer Support North America' created in the past 30 days for the reliability variance report.\"",
+    "answer": [
+      "reopen_count>=2",
+      "state=In Progress",
+      "assignment_group=Customer Support North America",
+      "sys_created_on = LAST 30 DAYS"
+    ]
+  },
+  {
+    "idx": 19,
+    "task": "Build Salesforce outreach list while honoring compliance flags",
+    "persona": "You are the Salesforce compliance-aware marketer balancing growth asks with do-not-contact requirements.",
+    "metadata": {
+      "required": "Collect the lead status, marketing segment, compliance flags, and fields after iteration.",
+      "optional": "Include workspace references if surfaced."
+    },
+    "turns": [
+      "Need fresh leads for the nurture push.",
+      "Status should be 'Working - Contacted'.",
+      "Make sure Do_Not_Call = false, Email_Opt_Out = false, Segment__c = Mid-Market, and return FirstName, LastName, Email for the nurture compliance workspace."
+    ],
+    "query": "Growth marketer Lila begins \"Need fresh leads for the nurture push.\" When you clarify status she says \"Status should be 'Working - Contacted'.\" After you ask about compliance she adds \"Make sure Do_Not_Call = false and Email_Opt_Out = false, filter to Segment__c = Mid-Market, and return FirstName, LastName, Email for the nurture compliance workspace.\"",
+    "answer": [
+      "Status = Working - Contacted",
+      "Do_Not_Call = false",
+      "Email_Opt_Out = false",
+      "Segment__c = Mid-Market",
+      "Fields: FirstName, LastName, Email"
+    ]
+  },
+  {
+    "idx": 20,
+    "task": "Track ServiceNow catalog completions that need survey triggers",
+    "persona": "You are the ServiceNow service delivery analyst turning CSAT follow-up chats into fulfillment filters.",
+    "metadata": {
+      "required": "Firm up catalog item, closed state, completion window, and assignment group from the dialogue.",
+      "optional": "Capture any survey exports once they arise."
+    },
+    "turns": [
+      "Which laptop requests wrapped up this week?",
+      "Catalog item is 'Enterprise Laptop Build'.",
+      "State should be 'Closed Complete', fulfillment finished in the last 7 days, keep assignment_group='End User Services', and note it's for the CSAT trigger export."
+    ],
+    "query": "Customer experience lead Jonas asks \"Which laptop requests wrapped up this week?\" When you check the item he confirms \"Catalog item 'Enterprise Laptop Build'.\" After clarifying status and ownership he adds \"State should be 'Closed Complete', fulfillment finished in the last 7 days, assignment_group='End User Services', and reference the CSAT trigger export.\"",
+    "answer": [
+      "cat_item=Enterprise Laptop Build",
+      "state=Closed Complete",
+      "closed_at = LAST 7 DAYS",
+      "assignment_group=End User Services"
+    ]
+  },
+  {
+    "idx": 21,
+    "task": "Sync QuickBooks invoices to Salesforce opportunities",
+    "persona": "You are the revenue operations bridge aligning QuickBooks invoices with Salesforce opportunities for audit-ready reporting.",
+    "metadata": {
+      "required": "Capture the QuickBooks invoice identifier, customer, expected Salesforce stage, and linkage requirement clarified over the turns.",
+      "optional": "Note any owner or region routing cues that surface."
+    },
+    "turns": [
+      "We just logged an invoice in QuickBooks and I need it reflected in Salesforce.",
+      "It's invoice INV-2024-001 for Acme Corporation; mirror the amount in an opportunity closing this quarter.",
+      "Link the new opportunity back to the QuickBooks invoice ID and keep the owner on the North America Renewals queue."
+    ],
+    "query": "Finance partner Ren says \"We just logged an invoice in QuickBooks and I need it reflected in Salesforce.\" When you probe for details she clarifies \"It's invoice INV-2024-001 for Acme Corporation; mirror the amount in an opportunity closing this quarter.\" After you confirm ownership she adds \"Link the new opportunity back to the QuickBooks invoice ID and keep the owner on the North America Renewals queue.\"",
+    "answer": [
+      "QuickBooks: Fetch invoice INV-2024-001 for Acme Corporation",
+      "Transform invoice totals into Salesforce opportunity fields with CloseDate set in the current quarter",
+      "Salesforce: Create opportunity owned by North America Renewals queue",
+      "Salesforce: Populate QuickBooks_Invoice__c with INV-2024-001 reference"
+    ]
+  },
+  {
+    "idx": 22,
+    "task": "Mirror ServiceNow incident updates into Salesforce cases",
+    "persona": "You are the support unification steward ensuring ServiceNow bridge updates stay aligned with Salesforce customer communications.",
+    "metadata": {
+      "required": "Capture the ServiceNow incident number, update window, Salesforce case ID linkage, and fields to sync clarified through the conversation.",
+      "optional": "Note any notification preferences that surface."
+    },
+    "turns": [
+      "Keep Salesforce in sync with the live ServiceNow bridge.",
+      "Incident INC0046123 has new workaround notes added in the last 30 minutes.",
+      "Push those notes into Case 00001234, set the status to 'Awaiting Customer', and tag the Service Queue owner."
+    ],
+    "query": "Support orchestrator Mina requests \"Keep Salesforce in sync with the live ServiceNow bridge.\" When you ask for specifics she clarifies \"Incident INC0046123 has new workaround notes added in the last 30 minutes.\" On the final pass she adds \"Push those notes into Case 00001234, set the status to 'Awaiting Customer', and tag the Service Queue owner.\"",
+    "answer": [
+      "ServiceNow: Pull latest updates for INC0046123 within last 30 minutes",
+      "Salesforce: Update Case 00001234 with workaround notes",
+      "Salesforce: Set Status='Awaiting Customer' and Owner='Service Queue'"
+    ]
+  },
+  {
+    "idx": 23,
+    "task": "Escalate Salesforce severity into ServiceNow emergency change",
+    "persona": "You are the incident-change liaison translating Salesforce escalation records into ServiceNow emergency change workflows.",
+    "metadata": {
+      "required": "Capture the Salesforce escalation ID, severity, impacted product, ServiceNow change type, and scheduling expectations clarified across turns.",
+      "optional": "Record any rollback notes if they surface."
+    },
+    "turns": [
+      "Salesforce escalation just tripped a Sev-1 change need.",
+      "Escalation ESC-90045 references product 'Payments Edge' and flagged Severity = Critical.",
+      "Spin up a ServiceNow Emergency change with that context, assign CAB 'Payments Reliability', and schedule implementation within 90 minutes."
+    ],
+    "query": "Release captain Omar says \"Salesforce escalation just tripped a Sev-1 change need.\" When you ask for details he continues \"Escalation ESC-90045 references product 'Payments Edge' and flagged Severity = Critical.\" On the final instruction he adds \"Spin up a ServiceNow Emergency change with that context, assign CAB 'Payments Reliability', and schedule implementation within 90 minutes.\"",
+    "answer": [
+      "Salesforce: Retrieve escalation ESC-90045 details including Severity and product",
+      "ServiceNow: Create Emergency change for Payments Edge with Severity=Critical",
+      "Assign CAB='Payments Reliability' and planned_start within 90 minutes"
+    ]
+  },
+  {
+    "idx": 24,
+    "task": "Push ServiceNow outage summary into Salesforce account notes",
+    "persona": "You are the enterprise incident communicator keeping Salesforce account teams aligned with ServiceNow outage bridges.",
+    "metadata": {
+      "required": "Capture the ServiceNow incident context, impacted customer account, Salesforce field update, and note linkage expressed during the conversation.",
+      "optional": "Include any timeline references that arise."
+    },
+    "turns": [
+      "Account execs need to know about the outage.",
+      "ServiceNow incident INC0045802 affects customer 'BluePeak Logistics'.",
+      "Add a note to Salesforce Account BluePeak Logistics summarizing the outage and set Service_Health__c = 'Degraded'."
+    ],
+    "query": "Customer liaison Avery states \"Account execs need to know about the outage.\" When you clarify scope she replies \"ServiceNow incident INC0045802 affects customer 'BluePeak Logistics'.\" On the final request she adds \"Add a note to Salesforce Account BluePeak Logistics summarizing the outage and set Service_Health__c = 'Degraded'.\"",
+    "answer": [
+      "ServiceNow: Retrieve incident INC0045802 summary and impact",
+      "Salesforce: Update Account BluePeak Logistics Service_Health__c='Degraded'",
+      "Salesforce: Append account note with outage summary"
+    ]
+  },
+  {
+    "idx": 25,
+    "task": "Reconcile QuickBooks payment status against Salesforce opportunities",
+    "persona": "You are the billing alignment analyst ensuring QuickBooks payment logs stay tied to Salesforce revenue forecasts.",
+    "metadata": {
+      "required": "Capture the QuickBooks payment batch, opportunity stage requirements, owner routing, and fields to update clarified over turns.",
+      "optional": "Note any variance thresholds if mentioned."
+    },
+    "turns": [
+      "Need to reconcile yesterday's QuickBooks payments with Salesforce.",
+      "Use QuickBooks payments posted on June 30 2024 for the 'Enterprise Expansion' segment.",
+      "For each matched opportunity, set Stage to 'Closed Won', update Amount_Paid__c, and note the QuickBooks payment ID."
+    ],
+    "query": "Revenue controller Jae says \"Need to reconcile yesterday's QuickBooks payments with Salesforce.\" When you clarify scope he replies \"Use QuickBooks payments posted on June 30 2024 for the 'Enterprise Expansion' segment.\" On the final request he adds \"For each matched opportunity, set Stage to 'Closed Won', update Amount_Paid__c, and note the QuickBooks payment ID.\"",
+    "answer": [
+      "QuickBooks: Retrieve payments dated June 30 2024 for Enterprise Expansion customers",
+      "Match payments to Salesforce opportunities by customer",
+      "Salesforce: Set Stage='Closed Won', update Amount_Paid__c, and store QuickBooks Payment ID"
+    ]
+  },
+  {
+    "idx": 26,
+    "task": "Generate Salesforce follow-up tasks from QuickBooks reminders",
+    "persona": "You are the revenue assurance planner turning QuickBooks reminder queues into Salesforce follow-up tasks.",
+    "metadata": {
+      "required": "Capture the QuickBooks reminder list, due window, Salesforce queue, and fields to populate clarified through the conversation.",
+      "optional": "Include any prioritization cues if mentioned."
+    },
+    "turns": [
+      "Convert QuickBooks reminders into Salesforce tasks.",
+      "Look at reminders scheduled between July 1 2024 and July 3 2024 for overdue retainers.",
+      "Create Salesforce tasks for the Finance Follow-up queue, DueDate next business day, and copy the QuickBooks reminder note into Comments."
+    ],
+    "query": "Billing coordinator Lior asks \"Convert QuickBooks reminders into Salesforce tasks.\" When you narrow it down she says \"Look at reminders scheduled between July 1 2024 and July 3 2024 for overdue retainers.\" On the final instruction she adds \"Create Salesforce tasks for the Finance Follow-up queue, DueDate next business day, and copy the QuickBooks reminder note into Comments.\"",
+    "answer": [
+      "QuickBooks: Retrieve reminders between July 1 2024 and July 3 2024 tagged overdue retainers",
+      "Salesforce: Create tasks assigned to Finance Follow-up queue with next business day due date",
+      "Salesforce: Populate Comments with QuickBooks reminder note"
+    ]
+  },
+  {
+    "idx": 27,
+    "task": "Align QuickBooks revenue schedules with Salesforce assets",
+    "persona": "You are the revenue continuity integrator translating QuickBooks revenue schedules into Salesforce asset updates.",
+    "metadata": {
+      "required": "Capture the QuickBooks revenue schedule window, customer tier, Salesforce asset linkage, and term updates mentioned across turns.",
+      "optional": "Note any proration rules if they surface."
+    },
+    "turns": [
+      "Need QuickBooks revenue schedules reflected on Salesforce assets.",
+      "Focus on schedules starting August 2024 for Tier 1 customers in QuickBooks.",
+      "Update Salesforce Asset records with the schedule start/end dates and store the QuickBooks schedule ID."
+    ],
+    "query": "Subscription manager Pilar notes \"Need QuickBooks revenue schedules reflected on Salesforce assets.\" When you clarify scope she says \"Focus on schedules starting August 2024 for Tier 1 customers in QuickBooks.\" On the final turn she adds \"Update Salesforce Asset records with the schedule start/end dates and store the QuickBooks schedule ID.\"",
+    "answer": [
+      "QuickBooks: Fetch revenue schedules starting August 2024 for Tier 1 customers",
+      "Map schedule term dates to Salesforce asset fields",
+      "Salesforce: Update Asset records with QuickBooks Schedule ID"
+    ]
+  },
+  {
+    "idx": 28,
+    "task": "Push Salesforce renewal risk notes into ServiceNow problem records",
+    "persona": "You are the customer reliability conduit making sure Salesforce renewal risks feed into ServiceNow problem management.",
+    "metadata": {
+      "required": "Capture the Salesforce account list, renewal risk flag, ServiceNow table, and note requirements clarified over turns.",
+      "optional": "Record any assignment cues if they surface."
+    },
+    "turns": [
+      "ServiceNow problem team needs renewal risk context from Salesforce.",
+      "Look at Salesforce accounts with Renewal_Risk__c = 'High' closing in Q3.",
+      "For each, append the risk summary to ServiceNow problem PRB0012456 and tag the Customer Stability group."
+    ],
+    "query": "CS operations lead Rowan says \"ServiceNow problem team needs renewal risk context from Salesforce.\" When you clarify scope they respond \"Look at Salesforce accounts with Renewal_Risk__c = 'High' closing in Q3.\" On the final instruction they add \"For each, append the risk summary to ServiceNow problem PRB0012456 and tag the Customer Stability group.\"",
+    "answer": [
+      "Salesforce: Query accounts with Renewal_Risk__c='High' and CloseDate in Q3",
+      "Compile renewal risk notes",
+      "ServiceNow: Update problem PRB0012456 with appended notes and assignment to Customer Stability"
+    ]
+  },
+  {
+    "idx": 29,
+    "task": "Route ServiceNow change backlog impacting Salesforce integrations",
+    "persona": "You are the release readiness coordinator linking ServiceNow change queues to Salesforce integration priorities.",
+    "metadata": {
+      "required": "Capture ServiceNow change type, window, impacted application, assignment group, and ordering clarified across the turns.",
+      "optional": "Include any tagging guidance if provided."
+    },
+    "turns": [
+      "Need the change backlog that touches Salesforce integrations.",
+      "Limit to ServiceNow change requests type 'Normal' planned between August 1 2024 and August 7 2024 with Application='Salesforce Core'.",
+      "Keep state='Assess', assignment_group='Integration Engineering', and order by planned start."
+    ],
+    "query": "Release chair Arnav says \"Need the change backlog that touches Salesforce integrations.\" When you clarify scope he answers \"Limit to ServiceNow change requests type 'Normal' planned between August 1 2024 and August 7 2024 with Application='Salesforce Core'.\" On the final detail he adds \"Keep state='Assess', assignment_group='Integration Engineering', and order by planned start.\"",
+    "answer": [
+      "type=Normal",
+      "Application=Salesforce Core",
+      "planned_start BETWEEN August 1 2024 AND August 7 2024",
+      "state=Assess",
+      "assignment_group=Integration Engineering",
+      "ORDERBY planned_start"
+    ]
+  },
+  {
+    "idx": 30,
+    "task": "Validate Salesforce pipeline readiness against ServiceNow deployment windows",
+    "persona": "You are the go-live coordination analyst aligning Salesforce pipeline milestones with ServiceNow deployment slots.",
+    "metadata": {
+      "required": "Capture the Salesforce stages, close date window, ServiceNow deployment window, and comparison output clarified over turns.",
+      "optional": "Note any follow-up exports if mentioned."
+    },
+    "turns": [
+      "Need to match Salesforce pipeline to ServiceNow deployment availability.",
+      "Look at opportunities in Stage 'Negotiation/Review' closing between September 1 and September 30 2024.",
+      "Compare to ServiceNow deployment calendar window for 'SFDC Release Train' in September and highlight conflicts."
+    ],
+    "query": "Program manager Lina asks \"Need to match Salesforce pipeline to ServiceNow deployment availability.\" When you clarify she replies \"Look at opportunities in Stage 'Negotiation/Review' closing between September 1 and September 30 2024.\" On the last turn she adds \"Compare to ServiceNow deployment calendar window for 'SFDC Release Train' in September and highlight conflicts.\"",
+    "answer": [
+      "Salesforce: Query opportunities Stage='Negotiation/Review' with CloseDate in September 2024",
+      "ServiceNow: Retrieve deployment calendar entries for SFDC Release Train in September",
+      "Produce list of opportunities overlapping deployment blackouts"
+    ]
+  },
+  {
+    "idx": 31,
+    "task": "Correlate ServiceNow asset compliance with Salesforce contract tier",
+    "persona": "You are the asset compliance steward tying ServiceNow hardware tracking to Salesforce contract obligations.",
+    "metadata": {
+      "required": "Capture the ServiceNow asset filters, required certification status, Salesforce account tier, and reporting fields clarified over the turns.",
+      "optional": "Note any escalation targets if mentioned."
+    },
+    "turns": [
+      "Need to know which customer hardware needs certification before contract renewal.",
+      "Filter ServiceNow assets model 'Secure Laptop Pro' at Berlin Data Hub with Certification_Status__c = 'Expired'.",
+      "Join to Salesforce accounts with Customer_Tier__c = 'Enterprise' and return Asset SerialNumber plus Account Owner."
+    ],
+    "query": "Compliance lead Greta opens with \"Need to know which customer hardware needs certification before contract renewal.\" When you narrow the scope she says \"Filter ServiceNow assets model 'Secure Laptop Pro' at Berlin Data Hub with Certification_Status__c = 'Expired'.\" On the final ask she adds \"Join to Salesforce accounts with Customer_Tier__c = 'Enterprise' and return Asset SerialNumber plus Account Owner.\"",
+    "answer": [
+      "ServiceNow: Query assets model='Secure Laptop Pro', location='Berlin Data Hub', Certification_Status__c='Expired'",
+      "Salesforce: Match assets to Enterprise-tier accounts",
+      "Return list with Asset SerialNumber and Account Owner"
+    ]
+  },
+  {
+    "idx": 32,
+    "task": "Roll Salesforce executive briefing notes into ServiceNow knowledge",
+    "persona": "You are the cross-platform documentation lead ensuring Salesforce briefing insights feed ServiceNow knowledge bases.",
+    "metadata": {
+      "required": "Capture the Salesforce event campaign, note fields, target ServiceNow knowledge base, and publishing state clarified over the turns.",
+      "optional": "Record any review assignments if mentioned."
+    },
+    "turns": [
+      "Need executive briefing notes in ServiceNow knowledge.",
+      "Use Salesforce campaign 'FY24 Executive Summit' and grab the Briefing_Notes__c field from attendees flagged VIP.",
+      "Publish articles in ServiceNow knowledge base 'Executive Briefings' with workflow_state='Draft' and assign to the Corporate Comms group."
+    ],
+    "query": "Field marketer Jonah requests \"Need executive briefing notes in ServiceNow knowledge.\" When you clarify he answers \"Use Salesforce campaign 'FY24 Executive Summit' and grab the Briefing_Notes__c field from attendees flagged VIP.\" On the last detail he adds \"Publish articles in ServiceNow knowledge base 'Executive Briefings' with workflow_state='Draft' and assign to the Corporate Comms group.\"",
+    "answer": [
+      "Salesforce: Extract VIP attendee Briefing_Notes__c from campaign FY24 Executive Summit",
+      "ServiceNow: Create knowledge articles in Executive Briefings base",
+      "Set workflow_state='Draft' and assign to Corporate Comms"
+    ]
+  },
+  {
+    "idx": 33,
+    "task": "Highlight ServiceNow incidents impacting Salesforce billing records",
+    "persona": "You are the vendor liaison translating ServiceNow incident queues into Salesforce billing safeguards.",
+    "metadata": {
+      "required": "Capture ServiceNow vendor filter, priority, state, Salesforce billing object linkage, and return fields clarified across turns.",
+      "optional": "Note any escalation owners if mentioned."
+    },
+    "turns": [
+      "Need incidents blocking Salesforce billing updates.",
+      "Focus on ServiceNow incidents for vendor 'CloudLink' with priority 2 in state 'Awaiting Vendor'.",
+      "Return Incident Number, Vendor_Case_Reference__c, and the linked Salesforce Billing_Id__c so finance can escalate."
+    ],
+    "query": "Vendor manager Cassie starts with \"Need incidents blocking Salesforce billing updates.\" When you drill deeper she replies \"Focus on ServiceNow incidents for vendor 'CloudLink' with priority 2 in state 'Awaiting Vendor'.\" On the final clarification she adds \"Return Incident Number, Vendor_Case_Reference__c, and the linked Salesforce Billing_Id__c so finance can escalate.\"",
+    "answer": [
+      "vendor=CloudLink",
+      "priority=2",
+      "state=Awaiting Vendor",
+      "Fields: Number, Vendor_Case_Reference__c, Salesforce_Billing_Id__c"
+    ]
+  },
+  {
+    "idx": 34,
+    "task": "Coordinate Salesforce onboarding tasks with ServiceNow provisioning",
+    "persona": "You are the onboarding workflow planner aligning Salesforce implementation tasks with ServiceNow catalog fulfillment.",
+    "metadata": {
+      "required": "Capture the Salesforce task filters, ServiceNow catalog item dependencies, status expectations, and return fields clarified during the dialogue.",
+      "optional": "Note any follow-up dashboards if mentioned."
+    },
+    "turns": [
+      "Need onboarding tasks tied to provisioning requests.",
+      "Filter Salesforce tasks created between August 5 2024 and August 9 2024 tagged with Provisioning_Request__c.",
+      "Only include ones linked to ServiceNow catalog item 'Secure VPN Token', status 'Not Started', and return Task Owner, DueDate, plus ServiceNow Request ID."
+    ],
+    "query": "Implementation lead Priyanka asks \"Need onboarding tasks tied to provisioning requests.\" When you narrow it down she says \"Filter Salesforce tasks created between August 5 2024 and August 9 2024 tagged with Provisioning_Request__c.\" On the final instruction she adds \"Only include ones linked to ServiceNow catalog item 'Secure VPN Token', status 'Not Started', and return Task Owner, DueDate, plus ServiceNow Request ID.\"",
+    "answer": [
+      "CreatedDate BETWEEN August 5 2024 AND August 9 2024",
+      "Provisioning_Request__c NOT NULL",
+      "Linked ServiceNow catalog item = Secure VPN Token",
+      "Status = Not Started",
+      "Fields: Owner.Name, ActivityDate, ServiceNow_Request_ID__c"
+    ]
+  },
+  {
+    "idx": 35,
+    "task": "Audit ServiceNow knowledge for Salesforce release readiness",
+    "persona": "You are the knowledge lifecycle owner ensuring ServiceNow documentation covers Salesforce release changes.",
+    "metadata": {
+      "required": "Capture ServiceNow knowledge base filter, workflow state, Salesforce release tag, and review window clarified across turns.",
+      "optional": "Include any export flags if provided."
+    },
+    "turns": [
+      "Which knowledge articles are missing the latest Salesforce release notes?",
+      "Stay within the 'Salesforce Enablement' knowledge base with workflow_state='Published'.",
+      "Find articles where Release_Tag__c != 'Summer24', last updated over 60 days ago, and queue them for review."
+    ],
+    "query": "Enablement partner Shawn asks \"Which knowledge articles are missing the latest Salesforce release notes?\" When you clarify which base he answers \"Stay within the 'Salesforce Enablement' knowledge base with workflow_state='Published'.\" On the final instruction he adds \"Find articles where Release_Tag__c != 'Summer24', last updated over 60 days ago, and queue them for review.\"",
+    "answer": [
+      "kb_knowledge_base=Salesforce Enablement",
+      "workflow_state=Published",
+      "Release_Tag__c != Summer24",
+      "sys_updated_on < TODAY - 60 DAYS"
+    ]
+  },
+  {
+    "idx": 36,
+    "task": "Identify Salesforce cases pending ServiceNow engineering work",
+    "persona": "You are the escalation planner unifying Salesforce case queues with ServiceNow engineering tasks.",
+    "metadata": {
+      "required": "Capture the Salesforce case filters, ServiceNow task linkage, escalation status, and return fields clarified in the conversation.",
+      "optional": "Note any dashboard references if mentioned."
+    },
+    "turns": [
+      "Which Salesforce cases are still waiting on ServiceNow engineering tasks?",
+      "Origin should be 'Phone', Product__c = 'Edge Gateway', and ServiceNow_Task_Link__c populated.",
+      "Keep Status = 'Escalated', Priority = 'Critical', and return CaseNumber, ServiceNow_Task_Link__c, and Owner.Team__c."
+    ],
+    "query": "Support director Nia asks \"Which Salesforce cases are still waiting on ServiceNow engineering tasks?\" When you narrow the criteria she says \"Origin should be 'Phone', Product__c = 'Edge Gateway', and ServiceNow_Task_Link__c populated.\" On the final detail she adds \"Keep Status = 'Escalated', Priority = 'Critical', and return CaseNumber, ServiceNow_Task_Link__c, and Owner.Team__c.\"",
+    "answer": [
+      "Origin = Phone",
+      "Product__c = Edge Gateway",
+      "ServiceNow_Task_Link__c NOT NULL",
+      "Status = Escalated",
+      "Priority = Critical",
+      "Fields: CaseNumber, ServiceNow_Task_Link__c, Owner.Team__c"
+    ]
+  },
+  {
+    "idx": 37,
+    "task": "Flag ServiceNow vulnerabilities tied to Salesforce customer data",
+    "persona": "You are the security operations coordinator ensuring ServiceNow vulnerability review stays aligned with Salesforce customer exposure.",
+    "metadata": {
+      "required": "Capture ServiceNow vulnerability filters, Salesforce data classification, due window, and assignment group clarified through the turns.",
+      "optional": "Note any export requirements if they appear."
+    },
+    "turns": [
+      "Need vulnerability requests that impact Salesforce customer data.",
+      "Look at sn_vul_request records with Risk Score 80 or above where Data_Domain__c = 'Salesforce Customer'.",
+      "State should be 'Pending Review', Due Date within the next 5 days, assignment_group 'Security CAB', and include the linked Salesforce Account."
+    ],
+    "query": "Security lead Omar says \"Need vulnerability requests that impact Salesforce customer data.\" When you clarify scope he replies \"Look at sn_vul_request records with Risk Score 80 or above where Data_Domain__c = 'Salesforce Customer'.\" On the final instruction he adds \"State should be 'Pending Review', Due Date within the next 5 days, assignment_group 'Security CAB', and include the linked Salesforce Account.\"",
+    "answer": [
+      "table=sn_vul_request",
+      "risk_score >= 80",
+      "Data_Domain__c = Salesforce Customer",
+      "state=Pending Review",
+      "due_date WITHIN NEXT 5 DAYS",
+      "assignment_group=Security CAB",
+      "Fields: Number, Salesforce_Account__c"
+    ]
+  },
+  {
+    "idx": 38,
+    "task": "Spot Salesforce expansions waiting on ServiceNow deployment approvals",
+    "persona": "You are the finance liaison ensuring Salesforce expansion deals account for pending ServiceNow deployments.",
+    "metadata": {
+      "required": "Capture Salesforce opportunity filters, ServiceNow approval linkage, amount threshold, and return fields clarified across the turns.",
+      "optional": "Record any tracker references if mentioned."
+    },
+    "turns": [
+      "Need expansion deals that still wait on ServiceNow deployment approvals.",
+      "Opportunities should be Type 'Expansion' in Stage 'Proposal/Price Quote' closing between October 1 2024 and October 15 2024.",
+      "Filter to Amount greater than 500000 where ServiceNow_Deployment_Approval__c = 'Pending' and return Opportunity Name, Owner, Amount, and ServiceNow Change ID."
+    ],
+    "query": "Finance partner Jacob opens with \"Need expansion deals that still wait on ServiceNow deployment approvals.\" When you clarify he says \"Opportunities should be Type 'Expansion' in Stage 'Proposal/Price Quote' closing between October 1 2024 and October 15 2024.\" On the final detail he adds \"Filter to Amount greater than 500000 where ServiceNow_Deployment_Approval__c = 'Pending' and return Opportunity Name, Owner, Amount, and ServiceNow Change ID.\"",
+    "answer": [
+      "Type = Expansion",
+      "StageName = Proposal/Price Quote",
+      "CloseDate BETWEEN October 1 2024 AND October 15 2024",
+      "Amount > 500000",
+      "ServiceNow_Deployment_Approval__c = Pending",
+      "Fields: Opportunity Name, Owner, Amount, ServiceNow_Change_ID__c"
+    ]
+  },
+  {
+    "idx": 39,
+    "task": "Identify ServiceNow change tasks blocking Salesforce release",
+    "persona": "You are the change execution shepherd connecting ServiceNow change tasks to Salesforce release-readiness.",
+    "metadata": {
+      "required": "Capture the ServiceNow change ID, task type, state, Salesforce release reference, and due window clarified across turns.",
+      "optional": "Note any tagging instructions if they surface."
+    },
+    "turns": [
+      "Which change tasks are blocking the Salesforce release?",
+      "Focus on ServiceNow change CHG0054321 tied to Salesforce Release 'Atlas Summer24'.",
+      "Task_Type should be 'Testing', State 'Work in Progress', Assigned_to 'QA Guild', Due Date within 3 days, and return Salesforce Release ID."
+    ],
+    "query": "Release manager Victor asks \"Which change tasks are blocking the Salesforce release?\" When you specify the change he says \"Focus on ServiceNow change CHG0054321 tied to Salesforce Release 'Atlas Summer24'.\" On the final detail he adds \"Task_Type should be 'Testing', State 'Work in Progress', Assigned_to 'QA Guild', Due Date within 3 days, and return Salesforce Release ID.\"",
+    "answer": [
+      "parent_change=CHG0054321",
+      "Salesforce_Release='Atlas Summer24'",
+      "Task_Type=Testing",
+      "state=Work in Progress",
+      "assigned_to=QA Guild",
+      "due_date WITHIN NEXT 3 DAYS",
+      "Fields: Task Number, Salesforce_Release_ID__c"
+    ]
+  },
+  {
+    "idx": 40,
+    "task": "Align QuickBooks delinquent accounts with ServiceNow support queues",
+    "persona": "You are the support finance integrator making sure QuickBooks delinquency flags reach ServiceNow support for outreach.",
+    "metadata": {
+      "required": "Capture QuickBooks delinquency criteria, ServiceNow queue routing, notification fields, and follow-up expectations clarified in the conversation.",
+      "optional": "Note any escalation triggers if they surface."
+    },
+    "turns": [
+      "Need delinquent QuickBooks accounts surfaced to ServiceNow support.",
+      "Pull QuickBooks customers with balance overdue more than 30 days and status 'Delinquent'.",
+      "Create ServiceNow incidents assigned to 'Customer Care Finance', include balance amount, and flag follow-up within 48 hours."
+    ],
+    "query": "Billing director Mira says \"Need delinquent QuickBooks accounts surfaced to ServiceNow support.\" When you narrow it down she explains \"Pull QuickBooks customers with balance overdue more than 30 days and status 'Delinquent'.\" On the final clarification she adds \"Create ServiceNow incidents assigned to 'Customer Care Finance', include balance amount, and flag follow-up within 48 hours.\"",
+    "answer": [
+      "QuickBooks: Retrieve customers overdue > 30 days with status Delinquent",
+      "ServiceNow: Create incidents assigned to Customer Care Finance",
+      "Populate balance amount and set follow-up due within 48 hours"
+    ]
+  }
+]
